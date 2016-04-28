@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset = "UTF-8">
+        <title>What's the Weather?</title>
+	<link rel="stylesheet" href="woeid.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">	
+</head>
+
+<body onload = "control.initialize()">
+
+
+<div id="leftHalf">
+<h1> Current </h1>
+
+<P id = 'cityName'></p>
+<P id="currentWeather" ></p>
+<P id = "celsiusWeather"></p>
+<p id = "name"></p>
+
+<P id = "searchText"> What's your weather? Type in your city or zip and click the magnifying glass.</P>
+ <input type="text" id="zip" placeholder="Davis, CA"> <img id ="search" src = "magnifying-glass.png" onclick='control.lookupWoeid()'>
+
+<footer> <img class = "credits" src= yahoo.png> </footer> 
+</div>
+
+
+
+
+<div id = "rightHalf">
+
+<h2> Forecast </h2>
+<div id = "future">
+    <div id = "0days" class = "days">
+        <p class = "weekday"></p> 
+        <img class = "icon">
+        <p class = "condition"</p>       
+        <p class = "high"></p>
+        <p class = "low"></p> 
+        <br> 
+    </div>
+    <hr>
+    
+    <div id = "1days" class = "days">
+    <p class = "weekday"></p> 
+        <img class = "icon">
+        <p class = "condition"</p>
+        <p class = "high"></p>
+        <p class = "low"></p>
+        <br>
+    </div>
+    <hr>
+    
+    <div id = "2days" class = "days">
+          <p class = "weekday"></p>   
+        <img class = "icon">
+        <p class = "condition"</p>
+        <p class = "high"></p>
+        <p class = "low"></p>
+        <br>
+    </div>
+    <hr>
+    <div id = "3days" class = "days">
+        <p class = "weekday"></p> 
+        <img class = "icon">
+        <p class = "condition"</p>
+        <p class = "high"></p>
+        <p class = "low"></p>
+    <br>
+   </div>
+    <hr>
+    <div id = "4days" class = "days">
+        <p class = "weekday"></p> 
+        <img class = "icon">
+        <p class = "condition"</p>
+        <p class = "high"></p>
+        <p class = "low"></p>
+        <br>
+    </div>
+    <hr>
+
+</div>
+
+<footer class = "credits"> <p> Design by Tara Parker-Essig<p><p>Icons by Yorlmar Campos from the Noun Project</p>
+<p> Code by Davey Jay Belliss <p> 
+</footer>
+</div>
+
+<div style="clear:both"></div>
+
+<script src="woeid.js"></script>
+
+
+</body>
+</html>
+
+

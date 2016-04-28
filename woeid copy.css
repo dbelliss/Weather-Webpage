@@ -1,0 +1,119 @@
+
+/* applies to the whole body */
+body{
+     font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color: #a2a25f;
+	text-align: center;
+	font-size: x-large;
+        background-color: white;
+        height: 100%;
+}		
+
+
+img.icon {
+    float: right;
+    height: 50px;
+    display: inline;
+}
+
+.condition,.high,.low{
+    color: orange;
+    margin: 10px;
+    text-align: left;
+}
+
+hr {
+    border-color: orange;
+
+}
+
+html, body, #wrapper {
+    height: 100%;
+}
+
+/* two id selectors; apply to named elements in the HTML */
+#leftHalf {
+	background-color:orange ;
+	width: 50%;
+        height: 100%;
+	float: left;
+        color: white;
+        overflow: auto;
+}
+
+
+h1 {
+        text-decoration: underline;
+        opacity: .5;
+        color: white;
+}
+
+h2 {
+        text-decoration: underline;
+        opacity: .5;
+        color: orange;
+}
+
+
+#rightHalf {
+        width: 50%;
+        height: 100%;
+        float: right;
+        background-color: white;
+        overflow: auto;
+
+}
+
+footer.credits {
+        font-size: 10px;
+        color: orange;
+
+}
+
+p.leftHalf {
+        color: white;
+}
+
+p.rightHalf{
+        color:orange;
+}
+
+    			
+
+input#zip {
+    margin-left: 0%;
+    font-size: x-large;
+    background-color: ivory;
+    border-radius: 10px;
+    display: inline;
+}
+
+img#search {
+        display: inline;
+        max-height: 30px;
+        
+}
+#weather{
+        font-size: 100px;
+}
+
+button {
+       display: inline;
+       border-radius: 5px;
+       color: ivory;
+       font-size: x-large;
+       border: ivory;
+       border-width: 4px;
+       background-color: salmon;
+       margin: 0px;
+        background-image: url("magnifying-glass.svg")
+}
+
+p {
+    opacity: .7;
+
+
+}
+button:hover {
+        color: blue;
+}
