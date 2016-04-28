@@ -51,9 +51,47 @@ var model = {
 
 var view = {
 
+    "units" : "F",
+
+    fahrenheit: function()
+    {
+        view.units = "F";
+        var k = 0;
+        for (k = 0; k< 5; k++)//places in document
+        {
+            var day = document.getElementById(k+"days");//Current High/ low
+            day.children[3].textContent = "High: " + model.high[k]+ "\xB0" + view.units;  
+            day.children[4].textContent = "Low: " + model.low[k] + "\xB0" + view.units;         
+        }//Change back to fahrenheit
+
+        var fahrenheit = document.getElementById("currentWeather");//current weather
+        var celsius = document.getElementById("celsiusWeather");//current weather
+        celsius.style.opacity = .7;
+        fahrenheit.style.opacity = .9;
+    },//Changes temperature units to fahrenheit
+
+
+
+    celsius: function()
+    {
+        view.units = "C"
+        var k = 0;
+        for (k = 0; k< 5; k++)//places in document
+        {
+            var day = document.getElementById(k+"days");//Current High/ low
+            day.children[3].textContent = "High: " + Math.round((model.high[k] - 32) * (5/9))+ "\xB0" + view.units;  
+            day.children[4].textContent = "Low: " + Math.round((model.low[k] - 32) * (5/9)) + "\xB0" + view.units;         
+        }//convert to Celsius
+
+        var fahrenheit = document.getElementById("currentWeather");//current weather
+        var celsius = document.getElementById("celsiusWeather");//current weather
+        celsius.style.opacity = .9;
+        fahrenheit.style.opacity = .7;
+    }, //Changes temperature units to Celsius  
+
     
     getImage: function(code)
-    {
+    { 
         if (code < 10)
             return "thunder.png";
         else if (code < 16)
@@ -69,26 +107,26 @@ var view = {
         else if (code < 48)
             return "thunder.png";
 
-
         else return "cloudy.png";
     },//Checks condition and returns respective image
 
 
     changeWeatherDisplay : function(model)
     {
-        console.log(model);  
+      //  console.log(model);  
         var k = 0;
-
+        
         for (k = 0; k< 5; k++)//places in document
         {
             var day = document.getElementById(k+"days");//Current High/ low
-            day.children[2].textContent = model.forecast[k];//sets Condition 
-            day.children[3].textContent = "High: " + model.high[k]; 
-            day.children[4].textContent = "Low: " + model.low[k];
+            day.children[2].textContent = model.forecast[k];//sets Condition
             day.children[1].src = view.getImage(model.weather[k].code);    
             day.children[0].textContent = model.weekday[k];
          }
-        
+        if (view.units =="F")
+            view.fahrenheit();
+        else 
+            view.celsius();
         var fahrenheit = document.getElementById("currentWeather");//current weather
         var celsius = document.getElementById("celsiusWeather");//current weather
         var cityName = document.getElementById("cityName");//Location P element
@@ -144,12 +182,16 @@ var control={
     placeCallback: function(data) 
     {
         // did it find it?
-    
+            var s = document.getElementById("help");
+            s.textContent = ""
         // console.log(data.query.results); 
         if (data.query.results == null) 
         {
-	    var woeid = "not found";
-	    var name = "not found";
+            var place = document.getElementById("zip").value;
+            var s = document.getElementById("help");
+            s.textContent = place +" was not found."
+            return;
+
         } // was it unique? 
         else 
         {
@@ -167,9 +209,7 @@ var control={
             place.admin1.content+", "+ place.country.content;
         }
 
-        model.getWeather(woeid); //Gets weather
-
-
+        control.getWeather(woeid); //Gets weather
 
     }
 

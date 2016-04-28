@@ -19,6 +19,7 @@ body{
 img.icon {
     float: right; 
     width: 15%;
+    max-width: 100px;
     display: inline;
     margin-right: 100px;
     margin-top: -20px;
@@ -70,22 +71,24 @@ h2 {
 }/*Forecast*/
 
 p.weekday{
-        color: orange;
-        font-size: 25px;
-        opacity: .6;
-        margin-bottom: 8px;
+    color: orange;
+    font-size: 25px;
+    opacity: .6;
+    margin-bottom: 8px;
         
 }/* Days of the week*/
 
 p#celsiusWeather{
-      margin-top: 0px;
-      margin-bottom: 0px;
-        font-size: 110px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 110px;
+    opacity: .7;
+
 
 }/* Celsius Temp */
 
 
-p#searchText{
+p#searchText,#help{
     font-size: 12px;
     opacity: .8;
 }/*information on how to search for new location*/
@@ -94,7 +97,7 @@ p#searchText{
     margin-top: 0px;
     font-size: 110px;
     margin-bottom: 0px;
-    opacity: .8
+    opacity: .9;
 }/*Temp in fahrenheit*/
 
 
