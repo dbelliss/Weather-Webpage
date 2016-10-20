@@ -156,9 +156,24 @@ var control={
 
     getWeather : function(woei)
     {
-        var script = document.createElement('script');
-        script.src = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid='"+woei+"' & format=json&callback=model.setWeather";
-        document.body.appendChild(script); 
+        // var script = document.createElement('script');
+        // script.src = "https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid='"+woei+"' & format=json&callback=model.setWeather";
+        // document.body.appendChild(script); 
+
+	var http = new XMLHttpRequest();
+	var url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid='"+woei+"'&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+	var params = "lorem=ipsum&name=binny";
+	http.open("POST", url, true);
+
+//Send the proper header information along with the request
+http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+http.onreadystatechange = function() {//Call a function when the state changes.
+    if(http.readyState == 4 && http.status == 200) {
+        model.setWeather(JSON.parse(http.responseText));
+    }
+}
+http.send();
     },
   
     /* called when submit button is pushed */
@@ -173,9 +188,23 @@ var control={
     query, in the form of asking Yahoo to download a Javascript file.  */ 
     getNewPlace: function(place)
     {
-    	var script = document.createElement('script');
-	script.src = "https://query.yahooapis.com/v1/public/yql?q=select woeid,name,admin1,country  from   geo.places where text='"+place+"' & format=json & callback=control.placeCallback";
-	document.body.appendChild(script);
+ //    	var script = document.createElement('script');
+	// script.src = "https://query.yahooapis.com/v1/public/yql?q=select woeid,name,admin1,country  from   geo.places where text='"+place+"' & format=json & callback=control.placeCallback";
+	// document.body.appendChild(script);
+
+	var http = new XMLHttpRequest();
+	var url = "https://query.yahooapis.com/v1/public/yql?q=select%20woeid,name,admin1,country%20from%20geo.places%20where%20text='"+place+"'&format=json"
+	http.open("POST", url, true);
+
+	//Send the proper header information along with the request
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	http.onreadystatechange = function() {//Call a function when the state changes.
+	    if(http.readyState == 4 && http.status == 200) {
+	        control.placeCallback(JSON.parse(http.responseText));
+	    }
+	}
+	http.send();
     },      
 
     /* called when Yahoo returns a new place result */
