@@ -1,3 +1,5 @@
 # dbelliss.github.io
 
-Go to http://dbelliss.github.io/ to view a weather app I created using the Yahoo! weather API.
+An online weather application created using html, css, and javascript. Created for ECS89H - Web Development. 
+
+Go to http://dbelliss.github.io/Weather-Webpage to view the page.
